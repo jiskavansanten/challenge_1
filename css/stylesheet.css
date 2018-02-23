@@ -1,0 +1,42 @@
+grid-container{
+  display: grid;
+  grid-gap: 60px;
+
+  grid-template-areas:
+        "afstand"
+        "voorraad"
+        "brandstof" 
+
+}
+
+body{
+	background-color: #222222;
+}
+
+h1{
+	color: #ffffff;
+	position: left;
+	margin-left: 10%;
+	font-size: 22px;
+}
+
+.box1{
+	grid-area: afstand;
+	border-style: solid;
+	border-color: #ffffff;
+	border-radius: 3px;
+}
+.box2{
+	grid-area: voorraad;
+	border-style: solid;
+	border-color: #ffffff;
+	border-radius: 3px;
+	margin-top: 40px;
+}
+.box3{
+	grid-area: brandstof;
+	border-style: solid;
+	border-color: #ffffff;
+	border-radius: 3px;
+	margin-top: 40px;
+}
