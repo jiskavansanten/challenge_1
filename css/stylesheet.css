@@ -2,6 +2,8 @@
   display: grid;
   grid-template-columns: 1fr;
   grid-gap: 30px;
+  margin-left: 20px;
+  margin-right: 20px;
 
   grid-template-areas:
         "header"
@@ -81,6 +83,7 @@ header{
 	margin-top: 40px;
   background-color: white;
   width: 100%;
+  margin-top: 0px;
 }
 .box4{
   grid-area: snelheid;
@@ -108,9 +111,6 @@ header{
 
 }
 
-#box45{
-;
-}
 
 @media only screen and (min-width: 800px) {
   .grid-container{
@@ -124,7 +124,9 @@ header{
         "afstand brandstof"
         "snelheid meter";
   }
-
+  h1{
+    font-size: 22px;
+  }
 
 }
 
@@ -143,8 +145,30 @@ header{
   }
 .box3, .box4, .box5{
   width: 100%;
-}
+  }
 
+  h1{
+    font-size: 24px;
+  }
+}   
 
+@media only screen and (min-width: 1280px) {
+  .grid-container{
+     grid-template-columns: 1fr 1fr 1fr;
+    display: grid;
+    grid-gab: 20px;
+    
 
-}    
+    grid-template-areas: 
+        "header header header"
+        "afstand afstand afstand"
+        "brandstof snelheid meter";
+  }
+.box3, .box4, .box5{
+  width: 100%;
+  }
+
+  h1{
+    font-size: 26px;
+  }
+}     
