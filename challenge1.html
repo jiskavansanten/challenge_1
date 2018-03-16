@@ -22,36 +22,7 @@
 		<div class="box2">
 			<h1 class="text">Tijd tot Mars</h1>
 			<p id="demo"></p>
-			<script type="text/javascript">
-				// Set the date we're counting down to
-				var countDownDate = new Date("Sep 5, 20 15:37:25").getTime();
-
-				// Update the count down every 1 second
-				var x = setInterval(function() {
-
-				  // Get todays date and time
-				  var now = new Date().getTime();
-
-				  // Find the distance between now an the count down date
-				  var distance = countDownDate - now;
-
-				  // Time calculations for days, hours, minutes and seconds
-				  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-				  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-				  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-				  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-				  // Display the result in the element with id="demo"
-				  document.getElementById("demo").innerHTML = days + "d " + hours + "h "
-				  + minutes + "m " + seconds + "s ";
-
-				  // If the count down is finished, write some text 
-				  if (distance < 0) {
-				    clearInterval(x);
-				    document.getElementById("demo").innerHTML = "EXPIRED";
-				  }
-				}, 1000);
-			</script>
+			
 		
 		</div>
 		<div class="box3" id="box3">
@@ -60,36 +31,7 @@
 
     
 		    		
-		    <script>
-		        var ctx = document.getElementById('myChart').getContext('2d');
-		        var chart = new Chart(ctx, {
-		            // The type of chart we want to create
-		            type: 'doughnut',
-		            data: {
-		                labels: [
-		                    '',
-		                    '',
-		                    ''
-		                ],
-		                Color: [
-		                    '0000FF'
-		                ],
-		                datasets: [{
-		                    //deze waarden zijn de stukjes van donut
-		                    data: [40, 50, 50],
-		                    //deze waarden kan je aanpassen voor kleur
-		                    backgroundColor: ['red', 'orange', 'green']
-		                }],
-
-		                // Configuration options go here
-
-		            },
-		            options: {
-		                rotation: 1 * Math.PI,
-		                circumference: 1 * Math.PI
-		            }
-		        });
-		    </script>
+		    
 
 		</div>
 			<div class="box4">
@@ -110,150 +52,13 @@
 										
 									<div id="container-rpm"></div>
 									
-									<script type="text/javascript">
-										var gaugeOptions = {
-
-						    chart: {
-						        type: 'solidgauge'
-						    },
-
-						    title: null,
-
-						    pane: {
-						        center: ['50%', '85%'],
-						        size: '140%',
-						        startAngle: -90,
-						        endAngle: 90,
-						        background: {
-						            backgroundColor: '#ffffff',
-						            innerRadius: '60%',
-						            outerRadius: '100%',
-						            shape: 'arc'
-						        }
-						    },
-
-						    credits: {
-						        enabled: false
-						    },
-						  
-						    tooltip: {
-						        enabled: false
-						    },
-
-						    // the value axis
-						    yAxis: {
-						        stops: [
-						            [0.1, '#55BF3B'], // green
-						            [0.5, '#DDDF0D'], // yellow
-						            [0.9, '#DF5353'] // red
-						        ],
-						        lineWidth: 0,
-						        minorTickInterval: null,
-						        tickAmount: 2,
-						        title: {
-						            y: -70
-						        },
-						        labels: {
-						            y: 16
-						        }
-						    },
-
-						    plotOptions: {
-						        solidgauge: {
-						            dataLabels: {
-						                y: 5,
-						                borderWidth: 0,
-						                useHTML: true
-						            }
-						        }
-						    }
-						};
-
-						// The speed gauge
-						var chartSpeed = Highcharts.chart('container-speed', Highcharts.merge(gaugeOptions, {
-						    yAxis: {
-						        min: 0,
-						        max: 4000,
-						        title: {
-						            text: 'Speed'
-						        }
-						    },
-						  
-						    series: [{
-						        name: 'Speed',
-						        data: [2500],
-						        dataLabels: {
-						            format: '<div style="text-align:center"><span style="font-size:25px;color:' +
-						                ((Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black') + '">{y}</span><br/>' +
-						                   '<span style="font-size:12px;color:silver">km/h</span></div>'
-						        },
-						        tooltip: {
-						            valueSuffix: ' km/h'
-						        }
-						    }]
-
-						}));
-
-						// The RPM gauge
-						var chartRpm = Highcharts.chart('container-rpm', Highcharts.merge(gaugeOptions, {
-						    yAxis: {
-						        min: 0,
-						        max: 5,
-						        title: {
-						            text: 'RPM'
-						        }
-						    },
-
-						    series: [{
-						        name: 'RPM',
-						        data: [1],
-						        dataLabels: {
-						            format: '<div style="text-align:center"><span style="font-size:25px;color:' +
-						                ((Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black') + '">{y:.1f}</span><br/>' +
-						                   '<span style="font-size:12px;color:silver">* 1000 / min</span></div>'
-						        },
-						        tooltip: {
-						            valueSuffix: ' revolutions/min'
-						        }
-						    }]
-
-						}));
-
-						// Bring life to the dials
-						setInterval(function () {
-						    // Speed
-						    var point,
-						        newVal,
-						        inc;
-
-						    if (chartSpeed) {
-						        point = chartSpeed.series[0].points[0];
-						        inc = Math.round((Math.random() - 0.5) * 100);
-						        newVal = point.y + inc;
-
-						        if (newVal < 0 || newVal > 200) {
-						            newVal = point.y - inc;
-						        }
-
-						        point.update(newVal);
-						    }
-
-						    // RPM
-						    if (chartRpm) {
-						        point = chartRpm.series[0].points[0];
-						        inc = Math.random() - 0.5;
-						        newVal = point.y + inc;
-
-						        if (newVal < 0 || newVal > 5) {
-						            newVal = point.y - inc;
-						        }
-
-						        point.update(newVal);
-						    }
-						}, 2000);
-									</script>
+									
 									
 				</div>
 		</div>
+
+	<script src="scripts/stylesheettimer.js" type="text/javascript"></script>
+	<script src="scripts/stylesheetmeters.js" type="text/javascript"></script>	
+	<script src="scripts/stylesheet.js" type="text/javascript"></script>		
 	</body>
 </html>
